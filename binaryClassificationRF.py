@@ -1,6 +1,6 @@
 import urllib2
 from math import sqrt, fabs, exp
-import matplotlib.pyplot as plot
+# import matplotlib.pyplot as plot
 from sklearn.cross_validation import train_test_split
 from sklearn import ensemble
 from sklearn.metrics import roc_auc_score, roc_curve, accuracy_score
@@ -50,8 +50,8 @@ auc = []
 misclassErrors = []
 
 iTrees = 1000
-depth = None
-maxFeat  = None
+depth = 10
+maxFeat  = 25
 rocksVMinesRFModel = ensemble.RandomForestClassifier(n_estimators=
                      iTrees, max_depth=depth, max_features=
                      maxFeat, oob_score=False, random_state=531, n_jobs=-1)
