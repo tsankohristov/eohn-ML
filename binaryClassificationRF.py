@@ -47,24 +47,22 @@ xTrain, xTest, yTrain, yTest = train_test_split(X, y, test_size=0.30,
     random_state=531)
 
 auc = []
-nTreeList = [1000]
 misclassErrors = []
 
-for iTrees in nTreeList:
-    depth = None
-    maxFeat  = None
-    rocksVMinesRFModel = ensemble.RandomForestClassifier(n_estimators=
-                             iTrees, max_depth=depth, max_features=
-                             maxFeat, oob_score=False, random_state=531, n_jobs=-1)
-    rocksVMinesRFModel.fit(xTrain,yTrain)
+iTrees = 1000
+depth = None
+maxFeat  = None
+rocksVMinesRFModel = ensemble.RandomForestClassifier(n_estimators=
+                     iTrees, max_depth=depth, max_features=
+                     maxFeat, oob_score=False, random_state=531, n_jobs=-1)
+rocksVMinesRFModel.fit(xTrain,yTrain)
 
-    #Accumulate auc on test set
-    prediction = rocksVMinesRFModel.predict(xTest)
+prediction = rocksVMinesRFModel.predict(xTest)
 
-    
-    correct = accuracy_score(yTest, prediction)
 
-    misclassErrors.append(1.0 - correct)
+correct = accuracy_score(yTest, prediction)
+
+misclassErrors.append(1.0 - correct)
 
 
 
